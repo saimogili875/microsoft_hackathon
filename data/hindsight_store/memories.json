@@ -1,0 +1,18 @@
+{
+  "episode:ep-hist-1": {
+    "document_id": "episode:ep-hist-1",
+    "content": "[EPISODE]\nSituation:\nCompetitor price parity deal\n\nObjection:\nImplementation cost too high\n\nTactic:\nPhased rollout worked when competitor was at price parity\n\nCustomer reaction:\nAgreed to trial phase\n\nOutcome:\nwon\n\nWhy:\nPhased pilot de-risked upfront capital\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nPhased rollout worked when competitor was at price parity\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep-hist-1",
+      "deal_id": "D-PREV",
+      "source_ids": [],
+      "outcome": "won",
+      "extraction_confidence": 0.0,
+      "causal_confidence": 0.0,
+      "verification_status": "confirmed",
+      "verified_by_role": null,
+      "verified_at": null,
+      "valid_as_of": "2026-09-29"
+    }
+  }
+}

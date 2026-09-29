@@ -1,0 +1,32 @@
+{
+  "episode_id": "ep_9ae870fb3a",
+  "deal_id": "D-C2",
+  "situation": "{'source_id': 'hist-10', 'source_type': 'crm_record', 'deal_id': 'D-C2', 'raw_content': {'client_name': 'Hist Co', 'push",
+  "objection": "High initial price tag and ROI uncertainty",
+  "tactic": "Demonstrated modular ROI calculator and offered tiered deployment",
+  "customer_reaction": "Agreed to trial modular pilot phase",
+  "outcome": "won",
+  "why": "De-risked initial capital outlay by breaking contract into phased milestones",
+  "lesson": "Structure high-tier software quotes with phase 1 pilot options when price resistance occurs",
+  "applies_when": [
+    "When prospect raises High initial price tag and ROI uncertain objection",
+    "When negotiating enterprise software contracts"
+  ],
+  "did_not_hold_when": [
+    "When customer requires single-vendor procurement",
+    "When budget is completely frozen"
+  ],
+  "pricing_context": null,
+  "timestamp": "2026-09-29T14:46:36.063895+00:00",
+  "valid_as_of": "2026-09-29",
+  "source_ids": [
+    "raw_3be9f9f4b4",
+    "hist-10"
+  ],
+  "extraction_confidence": 0.4,
+  "causal_confidence": 0.5,
+  "verification_status": "pending_review",
+  "verified_by_role": null,
+  "verified_at": null,
+  "corrections": []
+}

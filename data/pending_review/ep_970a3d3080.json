@@ -1,0 +1,30 @@
+{
+  "episode_id": "ep_970a3d3080",
+  "deal_id": "D-C1",
+  "situation": "Live call with Test Co",
+  "objection": "Price and implementation scope",
+  "tactic": "Rep: Offered pilot option.",
+  "customer_reaction": "Agreed to follow-up proposal",
+  "outcome": "no_decision",
+  "why": "Live call concluded; full deal outcome pending next steps",
+  "lesson": "Document customer objections immediately during live call",
+  "applies_when": [
+    "Live enterprise sales calls",
+    "Negotiating pricing scope"
+  ],
+  "did_not_hold_when": [
+    "When budget is frozen"
+  ],
+  "pricing_context": null,
+  "timestamp": "2026-09-29T14:46:36.042836+00:00",
+  "valid_as_of": "2026-09-29",
+  "source_ids": [
+    "live_s_contract"
+  ],
+  "extraction_confidence": 0.75,
+  "causal_confidence": 0.4,
+  "verification_status": "pending_review",
+  "verified_by_role": null,
+  "verified_at": null,
+  "corrections": []
+}

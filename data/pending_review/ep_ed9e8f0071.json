@@ -1,0 +1,30 @@
+{
+  "episode_id": "ep_ed9e8f0071",
+  "deal_id": "D-LIVE-1",
+  "situation": "Live call with Acme Logistics",
+  "objection": "Competitor X is offering a implementation quote. Our implementation cost is too high and Competitor X is cheaper (~30%).",
+  "tactic": "Presented modular deployment options",
+  "customer_reaction": "Agreed to follow-up proposal",
+  "outcome": "no_decision",
+  "why": "Live call concluded; full deal outcome pending next steps",
+  "lesson": "Document customer objections immediately during live call",
+  "applies_when": [
+    "Live enterprise sales calls",
+    "Negotiating pricing scope"
+  ],
+  "did_not_hold_when": [
+    "When budget is frozen"
+  ],
+  "pricing_context": "Competitor X is offering a implementation quote. Our implementation cost is too high and Competitor ",
+  "timestamp": "2026-09-29T14:47:11.061205+00:00",
+  "valid_as_of": "2026-09-29",
+  "source_ids": [
+    "live_call_session_999"
+  ],
+  "extraction_confidence": 0.75,
+  "causal_confidence": 0.4,
+  "verification_status": "pending_review",
+  "verified_by_role": null,
+  "verified_at": null,
+  "corrections": []
+}
