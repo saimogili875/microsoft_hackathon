@@ -1,5 +1,5 @@
 """
-Deal Intelligence Pipeline Orchestrator executing full ETL, Mode 01 Live Calls, Mode 02-B Change Detection, Manual Chat, Groq Reasoning, and Report Generation.
+Deal Intelligence Pipeline Master Orchestrator supporting ARCH-1 (Knowledge Retention) & ARCH-2 (Information Retrieval & Reasoning).
 """
 
 from typing import Any, Dict, List, Optional, Union
@@ -8,7 +8,9 @@ from pathlib import Path
 from app.ingestion.registry import LoaderRegistry, default_loader_registry
 from app.normalization.normalizer import DataNormalizer
 from app.validation.validator import DataValidator
+from app.validation.extraction_validator import ExtractionValidator
 from app.extraction.episode_extractor import EpisodeExtractor
+from app.extraction.groq_extractor import GroqLLMExtractor
 from app.verification.verification_service import VerificationService
 from app.verification.verification_models import VerificationRequest, VerificationAction
 from app.hindsight.client import HindsightClient
@@ -19,21 +21,20 @@ from app.services.change_detection_service import ChangeDetectionService
 from app.services.report_generator import ReportGenerator
 from app.services.groq_service import GroqService
 from app.services.chat_service import SalespersonChatService
+from app.services.arch2_service import Arch2Service
 from app.models.raw_data import RawRecord
 from app.models.normalized_data import NormalizedRecord
 from app.models.episode import Episode
 from app.models.change_event import ChangeEvent, ClientState
 from app.models.live_interaction import LiveTranscriptChunk
+from app.models.retrieved_memory import Arch2ContextObject
 
 
 class DealIntelligencePipeline:
     """
-    Complete end-to-end data pipeline orchestrator supporting:
-    - Mode 01: Live Interaction Intelligence & Groq reasoning
-    - Mode 02: Historical Data Ingestion & Manual Sales Chat (Hindsight RECALL -> Groq)
-    - Mode 02-B: Post-Meeting Change Detection (18 categories)
-    - 5 Report Types Generation
-    - Common Hindsight Input Contract & Verification
+    Complete end-to-end data pipeline master orchestrator:
+    - ARCH-1: Knowledge Saving to Past (Ingestion -> Groq Extraction -> Validation -> Verification -> Hindsight Retain)
+    - ARCH-2: Getting Right Knowledge from Past (Query Analysis -> Hindsight Recall -> Filtering/Conflicts -> Groq -> Answer & Arch-3 Context Object)
     """
 
     def __init__(
@@ -46,14 +47,17 @@ class DealIntelligencePipeline:
         self.loader_registry = loader_registry or default_loader_registry
         self.normalizer = DataNormalizer(anonymize=anonymize)
         self.validator = DataValidator()
+        self.extraction_validator = ExtractionValidator()
+        self.groq_extractor = GroqLLMExtractor()
         self.episode_extractor = EpisodeExtractor()
         self.verification_service = VerificationService()
         self.hindsight_client = hindsight_client or HindsightClient()
         self.memory_manager = MemoryManager(self.hindsight_client)
         self.traceability_service = TraceabilityService(self.hindsight_client, self.verification_service)
         
-        # Groq Reasoning & Chat Services
+        # Groq Reasoning & Arch-2 Services
         self.groq_service = groq_service or GroqService()
+        self.arch2_service = Arch2Service(self.hindsight_client, self.groq_service, self.verification_service)
         self.chat_service = SalespersonChatService(self.hindsight_client, self.groq_service, self.verification_service)
         
         # Extended Services
@@ -61,7 +65,7 @@ class DealIntelligencePipeline:
         self.change_service = ChangeDetectionService()
         self.report_generator = ReportGenerator()
 
-    # --- Mode 02: Historical / Provided Data File Ingestion ---
+    # --- ARCH-1: Ingestion, Groq Extraction & Retention ---
     def process_file(self, file_path: Union[str, Path], source_type: str = "auto") -> Dict[str, Any]:
         raw_records = self.loader_registry.load(file_path, source_type=source_type)
         processed_episodes = []
@@ -74,14 +78,19 @@ class DealIntelligencePipeline:
                 continue
 
             norm_rec = self.normalizer.normalize(raw_rec)
-            norm_val_res = self.validator.validate_normalized(norm_rec)
-            if not norm_val_res.is_valid:
-                validation_errors.extend([e.model_dump() for e in norm_val_res.errors])
+            
+            # Run Groq LLM Semantic Extraction
+            ext_result = self.groq_extractor.extract_from_record(norm_rec)
+            ext_val_res = self.extraction_validator.validate_extraction(ext_result, raw_text=norm_rec.raw_text_content)
+            
+            if not ext_val_res.is_valid:
+                validation_errors.extend([e.model_dump() for e in ext_val_res.errors])
                 continue
 
-            episode = self.episode_extractor.extract_episode(norm_rec)
-            self.verification_service.save_pending(episode)
-            processed_episodes.append(episode)
+            for ext_ep in ext_result.episodes:
+                episode = self.groq_extractor.convert_to_episode(ext_ep, norm_rec)
+                self.verification_service.save_pending(episode)
+                processed_episodes.append(episode)
 
         return {
             "status": "success",
@@ -92,14 +101,44 @@ class DealIntelligencePipeline:
             "validation_errors": validation_errors,
         }
 
-    # --- Mode 02: Manual Salesperson Chat ---
-    def chat(self, user_query: str, client_context: Optional[str] = None) -> Dict[str, Any]:
-        return self.chat_service.answer_query(user_query, client_context=client_context)
+    # --- ARCH-2: Information Retrieval & Reasoning ---
+    def arch2_query(
+        self,
+        query: str,
+        client_id: Optional[str] = None,
+        deal_id: Optional[str] = None,
+        stage: Optional[str] = None,
+        current_context: Optional[Dict[str, Any]] = None,
+    ) -> Arch2ContextObject:
+        """
+        Executes ARCH-2 information retrieval pipeline.
+        READ-ONLY.
+        """
+        return self.arch2_service.process_query(
+            query=query, client_id=client_id, deal_id=deal_id, stage=stage, current_context=current_context
+        )
 
-    # --- Mode 01: Live Call Stream Processing & Groq Reasoning ---
+    # --- Mode 02 Manual Chat ---
+    def chat(self, user_query: str, client_context: Optional[str] = None) -> Dict[str, Any]:
+        arch2_obj = self.arch2_query(query=user_query, client_id=client_context)
+        memories_used = []
+        for m in arch2_obj.retrieved_memories:
+            d = m.to_dict()
+            d["document_id"] = m.memory_id
+            memories_used.append(d)
+        return {
+            "user_query": user_query,
+            "answer": arch2_obj.answer,
+            "hindsight_memories_used": memories_used,
+            "source_excerpts": arch2_obj.sources,
+            "memory_found": arch2_obj.memory_found,
+            "retrieved_memory_count": arch2_obj.retrieved_memory_count,
+            "conflicts_detected": arch2_obj.conflicts_detected,
+        }
+
+    # --- Mode 01 Live Stream ---
     def process_live_chunk(self, chunk: LiveTranscriptChunk) -> Dict[str, Any]:
         res = self.live_service.process_chunk(chunk)
-        # Pass to Groq if recalls or objections exist
         if res.get("recalled_experiences"):
             groq_payload = {
                 "task": "Live Call Intelligence",
@@ -118,36 +157,35 @@ class DealIntelligencePipeline:
         self.verification_service.save_pending(episode)
         return res
 
-    # --- Mode 02-B: Post-Meeting Change Detection ---
+    # --- Mode 02-B Change Detection ---
     def detect_changes(self, baseline: ClientState, new_interaction: NormalizedRecord) -> List[ChangeEvent]:
-        changes = self.change_service.detect_changes(baseline, new_interaction)
-        if changes:
-            print(f"[CHANGE DETECTED] Total: {len(changes)} shifts found -> Status: PENDING VERIFICATION")
-            print("[VERIFICATION REQUIRED] Human review needed before Hindsight retain.")
-        return changes
+        return self.change_service.detect_changes(baseline, new_interaction)
 
     # --- Report Generation ---
     def generate_report(self, report_type: str, context_data: Dict[str, Any]) -> str:
-        r_type = report_type.lower().strip()
-        if r_type == "client_relationship":
-            return self.report_generator.generate_client_relationship_report(
-                context_data["client_state"], context_data.get("historical_records", [])
+        if report_type == "live_interaction":
+            return self.report_generator.generate_live_interaction_report(
+                context_data.get("live_state")
             )
-        elif r_type == "live_interaction":
-            return self.report_generator.generate_live_interaction_report(context_data["live_state"])
-        elif r_type == "post_meeting_change":
-            return self.report_generator.generate_post_meeting_change_report(context_data["changes"])
-        elif r_type == "deal_intelligence":
+        elif report_type in ["change_detection", "post_meeting_change"]:
+            return self.report_generator.generate_post_meeting_change_report(
+                context_data.get("changes", [])
+            )
+        elif report_type in ["deal_strategy", "deal_intelligence"]:
             return self.report_generator.generate_deal_intelligence_report(
-                context_data["client_state"],
+                context_data.get("client_state", ClientState(deal_id="unknown", customer_context="Unknown Account")),
                 context_data.get("episodes", []),
                 context_data.get("recalls", []),
                 context_data.get("changes", []),
             )
-        elif r_type == "memory_update":
-            return self.report_generator.generate_memory_update_report(context_data["episodes"])
+        elif report_type in ["hindsight_learning", "memory_update"]:
+            return self.report_generator.generate_memory_update_report(
+                context_data.get("episodes", [])
+            )
         else:
-            raise ValueError(f"Unknown report type: '{report_type}'")
+            return self.report_generator.generate_client_relationship_report(
+                context_data.get("client_state"), context_data.get("historical_records", [])
+            )
 
     # --- Human Verification Workflow ---
     def verify_and_retain(self, episode_id: str, action: str, role: str = "account_executive", corrections: dict = None) -> Dict[str, Any]:

@@ -87,8 +87,8 @@ class GroqService:
 
     def _fallback_reasoning(self, payload: Dict[str, Any]) -> str:
         user_query = payload.get("user_query", "Deal Analysis")
-        hindsight_memories = payload.get("hindsight_memories", [])
-        detected_changes = payload.get("detected_changes", [])
+        hindsight_memories = payload.get("hindsight_memories") or payload.get("retrieved_memories", [])
+        detected_changes = payload.get("detected_changes") or payload.get("conflicts", [])
 
         out = []
         out.append(f"### DEAL INTELLIGENCE RESPONSE")
@@ -97,7 +97,7 @@ class GroqService:
         if hindsight_memories:
             out.append("\n#### 🧠 Recalled Hindsight Historical Memories:")
             for idx, mem in enumerate(hindsight_memories, 1):
-                doc_id = mem.get("document_id", f"mem_{idx}")
+                doc_id = mem.get("document_id") or mem.get("memory_id", f"mem_{idx}")
                 content = mem.get("content", str(mem))
                 out.append(f"{idx}. **[{doc_id}]**\n{content}\n")
         else:
@@ -107,11 +107,14 @@ class GroqService:
         if detected_changes:
             out.append("#### 🔄 Detected State Shifts & Conflicts:")
             for chg in detected_changes:
-                cat = chg.get("category", "shift")
-                old_info = chg.get("old_information", "")
-                new_info = chg.get("new_evidence", "")
-                diff = chg.get("difference", "")
-                out.append(f"- **[{cat}]** Old: '{old_info}' | New: '{new_info}' → {diff}")
+                if isinstance(chg, dict):
+                    cat = chg.get("category", "discrepancy")
+                    old_info = chg.get("old_information") or chg.get("topic", "")
+                    new_info = chg.get("new_evidence") or chg.get("description", "")
+                    diff = chg.get("difference") or chg.get("action_required", "")
+                    out.append(f"- **[{cat}]** {old_info}: '{new_info}' → {diff}")
+                else:
+                    out.append(f"- {str(chg)}")
             out.append("")
 
         out.append("---")

@@ -97,16 +97,17 @@ class HindsightClient:
         results = []
         q_lower = query.lower()
 
+        STOP_WORDS = {"what", "happened", "with", "when", "where", "have", "that", "this", "from", "they", "them", "some", "were", "been", "would", "could", "should", "does", "done", "doing", "before", "after", "about", "above", "below", "there", "their", "which"}
         for doc_id, payload in self._memory_store.items():
             content_lower = payload.content.lower()
-            query_terms = [t for t in q_lower.split() if len(t) > 2]
+            query_terms = [t for t in q_lower.split() if len(t) > 2 and t not in STOP_WORDS]
             if not query_terms:
-                score = 0.5
+                score = 0.0
             else:
                 matches = sum(1 for t in query_terms if t in content_lower)
                 score = matches / len(query_terms)
 
-            if score > 0.0 or not query_terms:
+            if score > 0.0:
                 results.append({
                     "document_id": doc_id,
                     "score": round(score, 2),
