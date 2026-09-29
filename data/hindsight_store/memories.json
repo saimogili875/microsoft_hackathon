@@ -183,5 +183,59 @@
       "verified_at": null,
       "valid_as_of": "2026-09-29"
     }
+  },
+  "episode:ep_d3d7a26796": {
+    "document_id": "episode:ep_d3d7a26796",
+    "content": "[EPISODE]\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\nB2B enterprise sales negotiations\n\nDid not hold when:\nBudget freeze\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep_d3d7a26796",
+      "deal_id": "D-TRACE-9",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "outcome": "won",
+      "extraction_confidence": 0.5,
+      "causal_confidence": 0.35,
+      "verification_status": "confirmed",
+      "verified_by_role": "account_executive",
+      "verified_at": "2026-09-29T17:32:47.091301+00:00",
+      "valid_as_of": "2026-09-29"
+    }
+  },
+  "episode:ep_e0fc9fec1e": {
+    "document_id": "episode:ep_e0fc9fec1e",
+    "content": "[EPISODE]\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\nB2B enterprise sales negotiations\n\nDid not hold when:\nBudget freeze\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep_e0fc9fec1e",
+      "deal_id": "D-TRACE-9",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "outcome": "won",
+      "extraction_confidence": 0.5,
+      "causal_confidence": 0.35,
+      "verification_status": "confirmed",
+      "verified_by_role": "account_executive",
+      "verified_at": "2026-09-29T17:33:56.623988+00:00",
+      "valid_as_of": "2026-09-29"
+    }
+  },
+  "episode:ep_20d564220e": {
+    "document_id": "episode:ep_20d564220e",
+    "content": "[EPISODE]\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\nB2B enterprise sales negotiations\n\nDid not hold when:\nBudget freeze\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep_20d564220e",
+      "deal_id": "D-TRACE-9",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "outcome": "won",
+      "extraction_confidence": 0.5,
+      "causal_confidence": 0.35,
+      "verification_status": "confirmed",
+      "verified_by_role": "account_executive",
+      "verified_at": "2026-09-29T17:34:36.733950+00:00",
+      "valid_as_of": "2026-09-29"
+    }
   }
 }

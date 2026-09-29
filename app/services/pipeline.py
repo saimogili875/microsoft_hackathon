@@ -5,7 +5,7 @@ Deal Intelligence Pipeline Master Orchestrator supporting ARCH-1 (Knowledge Rete
 from typing import Any, Dict, List, Optional, Union
 from pathlib import Path
 
-from app.ingestion.registry import LoaderRegistry, default_loader_registry
+from app.ingestion.registry import IngestionRegistry
 from app.normalization.normalizer import DataNormalizer
 from app.validation.validator import DataValidator
 from app.validation.extraction_validator import ExtractionValidator
@@ -39,12 +39,12 @@ class DealIntelligencePipeline:
 
     def __init__(
         self,
-        loader_registry: Optional[LoaderRegistry] = None,
+        loader_registry: Optional[Any] = None,
         anonymize: bool = True,
         hindsight_client: Optional[HindsightClient] = None,
         groq_service: Optional[GroqService] = None,
     ):
-        self.loader_registry = loader_registry or default_loader_registry
+        self.loader_registry = loader_registry or IngestionRegistry()
         self.normalizer = DataNormalizer(anonymize=anonymize)
         self.validator = DataValidator()
         self.extraction_validator = ExtractionValidator()
