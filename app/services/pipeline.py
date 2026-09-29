@@ -1,5 +1,5 @@
 """
-Deal Intelligence Pipeline Orchestrator executing full ETL, Mode 01 Live Calls, Mode 02-B Change Detection, and Report Generation.
+Deal Intelligence Pipeline Orchestrator executing full ETL, Mode 01 Live Calls, Mode 02-B Change Detection, Manual Chat, Groq Reasoning, and Report Generation.
 """
 
 from typing import Any, Dict, List, Optional, Union
@@ -17,6 +17,8 @@ from app.services.traceability import TraceabilityService
 from app.services.live_intelligence_service import LiveIntelligenceService
 from app.services.change_detection_service import ChangeDetectionService
 from app.services.report_generator import ReportGenerator
+from app.services.groq_service import GroqService
+from app.services.chat_service import SalespersonChatService
 from app.models.raw_data import RawRecord
 from app.models.normalized_data import NormalizedRecord
 from app.models.episode import Episode
@@ -27,9 +29,9 @@ from app.models.live_interaction import LiveTranscriptChunk
 class DealIntelligencePipeline:
     """
     Complete end-to-end data pipeline orchestrator supporting:
-    - Mode 01: Live Interaction Intelligence
-    - Mode 02: Provided / Historical Data Ingestion
-    - Mode 02-B: Post-Meeting Change Detection
+    - Mode 01: Live Interaction Intelligence & Groq reasoning
+    - Mode 02: Historical Data Ingestion & Manual Sales Chat (Hindsight RECALL -> Groq)
+    - Mode 02-B: Post-Meeting Change Detection (18 categories)
     - 5 Report Types Generation
     - Common Hindsight Input Contract & Verification
     """
@@ -39,15 +41,20 @@ class DealIntelligencePipeline:
         loader_registry: Optional[LoaderRegistry] = None,
         anonymize: bool = True,
         hindsight_client: Optional[HindsightClient] = None,
+        groq_service: Optional[GroqService] = None,
     ):
         self.loader_registry = loader_registry or default_loader_registry
         self.normalizer = DataNormalizer(anonymize=anonymize)
         self.validator = DataValidator()
         self.episode_extractor = EpisodeExtractor()
         self.verification_service = VerificationService()
-        self.hindsight_client = hindsight_client or HindsightClient(use_local_mock=True)
+        self.hindsight_client = hindsight_client or HindsightClient()
         self.memory_manager = MemoryManager(self.hindsight_client)
         self.traceability_service = TraceabilityService(self.hindsight_client, self.verification_service)
+        
+        # Groq Reasoning & Chat Services
+        self.groq_service = groq_service or GroqService()
+        self.chat_service = SalespersonChatService(self.hindsight_client, self.groq_service, self.verification_service)
         
         # Extended Services
         self.live_service = LiveIntelligenceService(self.hindsight_client)
@@ -85,9 +92,25 @@ class DealIntelligencePipeline:
             "validation_errors": validation_errors,
         }
 
-    # --- Mode 01: Live Call Stream Processing ---
+    # --- Mode 02: Manual Salesperson Chat ---
+    def chat(self, user_query: str, client_context: Optional[str] = None) -> Dict[str, Any]:
+        return self.chat_service.answer_query(user_query, client_context=client_context)
+
+    # --- Mode 01: Live Call Stream Processing & Groq Reasoning ---
     def process_live_chunk(self, chunk: LiveTranscriptChunk) -> Dict[str, Any]:
-        return self.live_service.process_chunk(chunk)
+        res = self.live_service.process_chunk(chunk)
+        # Pass to Groq if recalls or objections exist
+        if res.get("recalled_experiences"):
+            groq_payload = {
+                "task": "Live Call Intelligence",
+                "user_query": f"Live call signal: {chunk.text}",
+                "current_interaction": res["extracted_signals"],
+                "hindsight_memories": res["recalled_experiences"],
+                "detected_changes": [],
+            }
+            groq_insight = self.groq_service.generate_response(groq_payload)
+            res["groq_reasoning"] = groq_insight
+        return res
 
     def finalize_live_session(self, session_id: str) -> Dict[str, Any]:
         res = self.live_service.finalize_meeting(session_id)
@@ -97,7 +120,11 @@ class DealIntelligencePipeline:
 
     # --- Mode 02-B: Post-Meeting Change Detection ---
     def detect_changes(self, baseline: ClientState, new_interaction: NormalizedRecord) -> List[ChangeEvent]:
-        return self.change_service.detect_changes(baseline, new_interaction)
+        changes = self.change_service.detect_changes(baseline, new_interaction)
+        if changes:
+            print(f"[CHANGE DETECTED] Total: {len(changes)} shifts found -> Status: PENDING VERIFICATION")
+            print("[VERIFICATION REQUIRED] Human review needed before Hindsight retain.")
+        return changes
 
     # --- Report Generation ---
     def generate_report(self, report_type: str, context_data: Dict[str, Any]) -> str:

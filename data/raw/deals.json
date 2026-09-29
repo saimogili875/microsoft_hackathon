@@ -1,0 +1,28 @@
+[
+  {
+    "source_id": "crm_abc_001",
+    "source_type": "crm_record",
+    "deal_id": "D-ABC-100",
+    "client_name": "ABC Logistics",
+    "deal_stage": "closed_won",
+    "stakeholders": ["John Smith (VP Ops)", "Sarah Jenkins (CTO)"],
+    "pushback": ["Implementation cost too high", "Integration complexity"],
+    "salesperson_actions": ["Offered phased rollout pilot", "Provided pre-built connectors"],
+    "deal_result": "won",
+    "pricing": "₹12L initial quote, closed at ₹10L",
+    "competitors": ["Competitor X"]
+  },
+  {
+    "source_id": "crm_global_002",
+    "source_type": "crm_record",
+    "deal_id": "D-GLO-200",
+    "client_name": "Global Cargo Corp",
+    "deal_stage": "in_progress",
+    "stakeholders": ["Alice Smith (VP)", "Bob Jones (CTO)"],
+    "pushback": ["Initial implementation cost"],
+    "salesperson_actions": ["Demonstrated modular ROI calculator"],
+    "deal_result": "in_progress",
+    "pricing": "₹15L annual license",
+    "competitors": ["Competitor X", "Competitor Y"]
+  }
+]

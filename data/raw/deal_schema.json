@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DealRecord",
+  "type": "object",
+  "properties": {
+    "deal_id": {"type": "string"},
+    "client_name": {"type": "string"},
+    "deal_stage": {"type": "string"},
+    "stakeholders": {"type": "array", "items": {"type": "string"}},
+    "pushback": {"type": "array", "items": {"type": "string"}},
+    "salesperson_actions": {"type": "array", "items": {"type": "string"}},
+    "deal_result": {"type": "string"},
+    "pricing": {"type": "string"},
+    "competitors": {"type": "array", "items": {"type": "string"}}
+  },
+  "required": ["source_id", "source_type"]
+}

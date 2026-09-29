@@ -1,0 +1,10 @@
+[
+  {
+    "candidate_id": "cand-001",
+    "deal_id": "D-ABC-100",
+    "proposed_memory": "ABC Logistics selected phased rollout when initial quote was ₹12L.",
+    "status": "pending_review",
+    "extraction_confidence": 0.9,
+    "causal_confidence": 0.8
+  }
+]

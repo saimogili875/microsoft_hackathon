@@ -1,0 +1,21 @@
+[
+  {
+    "scenario_id": "scen-001",
+    "title": "Competitor Price Shift Conflict",
+    "old_memory": {
+      "competitor": "Competitor X",
+      "pricing": "₹10L",
+      "valid_from": "2025-01-01"
+    },
+    "current_interaction": {
+      "client_name": "ABC Logistics",
+      "transcript_snippet": "Customer says Competitor X now offered ₹7L quote."
+    },
+    "expected_conflict": {
+      "category": "competitor_price_change",
+      "old_information": "Competitor X ≈ ₹10L",
+      "new_evidence": "Customer reports ≈ ₹7L",
+      "status": "pending_verification"
+    }
+  }
+]

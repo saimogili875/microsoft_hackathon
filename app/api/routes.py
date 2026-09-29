@@ -1,6 +1,6 @@
 """
 FastAPI Route Definitions for Deal Intelligence Data Pipeline.
-Supports Mode 01 Live Calls, Mode 02 File Ingestion, Change Detection, and Reports.
+Supports Mode 01 Live Calls, Mode 02 File Ingestion & Manual Chat, Change Detection, and Reports.
 """
 
 from typing import Any, Dict, List, Optional
@@ -22,10 +22,14 @@ from app.verification.verification_models import VerificationAction
 if FASTAPI_AVAILABLE:
     app = FastAPI(
         title="Deal Intelligence Data Pipeline API",
-        description="Data ingestion, Mode 01 Live Call Intelligence, Mode 02-B Change Detection, Human Verification, Hindsight Memory retention, and Report Generation.",
-        version="2.0.0",
+        description="Data ingestion, Mode 01 Live Call Intelligence, Mode 02 Manual Chat & Historical Data, Mode 02-B Change Detection, Groq reasoning, and Hindsight Memory retention.",
+        version="2.1.0",
     )
     pipeline = DealIntelligencePipeline()
+
+    class ChatRequestPayload(BaseModel):
+        user_query: str
+        client_context: Optional[str] = None
 
     class ReviewPayload(BaseModel):
         episode_id: str
@@ -46,11 +50,11 @@ if FASTAPI_AVAILABLE:
     def health_check():
         return {
             "status": "online",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "hindsight": pipeline.hindsight_client.health_check(),
         }
 
-    # --- Mode 02 Ingestion ---
+    # --- Mode 02 Ingestion & Manual Chat ---
     @app.post("/api/v1/ingest/file")
     async def ingest_file(file: UploadFile = File(...), source_type: str = Form("auto")):
         suffix = Path(file.filename).suffix
@@ -62,6 +66,14 @@ if FASTAPI_AVAILABLE:
         try:
             result = pipeline.process_file(tmp_path, source_type=source_type)
             return result
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=str(e))
+
+    @app.post("/api/v1/chat")
+    def manual_chat(payload: ChatRequestPayload):
+        try:
+            res = pipeline.chat(payload.user_query, client_context=payload.client_context)
+            return res
         except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
 

@@ -1,0 +1,9 @@
+[
+  {
+    "conversation_id": "conv-abc-101",
+    "deal_id": "D-ABC-100",
+    "client_name": "ABC Logistics",
+    "transcript": "Rep: Hello John. Following up on the implementation proposal.\nCustomer: Hi. We reviewed the quote for ₹12L. The implementation cost is too high for our Q3 budget.\nRep: Understood. What if we break this into a Phase 1 pilot for ₹4L focused on core routing, then expand?\nCustomer: That makes sense. We can get approval for a ₹4L pilot phase.",
+    "timestamp": "2026-08-15T14:30:00Z"
+  }
+]

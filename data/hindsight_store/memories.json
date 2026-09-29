@@ -14,5 +14,87 @@
       "verified_at": null,
       "valid_as_of": "2026-09-29"
     }
+  },
+  "episode:ep-hist-abc": {
+    "document_id": "episode:ep-hist-abc",
+    "content": "[EPISODE]\nSituation:\nABC Logistics pricing discussion in 2025\n\nObjection:\nCompetitor X quote\n\nTactic:\nOffered phased rollout\n\nCustomer reaction:\nAgreed to pilot\n\nOutcome:\nwon\n\nWhy:\nPhased pilot de-risked upfront capital\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nPhased rollout works when competitor price is at parity (\u20b910L)\n\nPricing context:\nCompetitor X price \u2248 \u20b910L\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep-hist-abc",
+      "deal_id": "D-ABC-100",
+      "source_ids": [],
+      "outcome": "won",
+      "extraction_confidence": 0.0,
+      "causal_confidence": 0.0,
+      "verification_status": "confirmed",
+      "verified_by_role": null,
+      "verified_at": null,
+      "valid_as_of": "2026-09-29"
+    }
+  },
+  "episode:ep-abc-chat": {
+    "document_id": "episode:ep-abc-chat",
+    "content": "[EPISODE]\nSituation:\nABC Logistics implementation budget objection\n\nObjection:\nImplementation cost too high\n\nTactic:\nOffered 3-phase modular rollout starting with \u20b94L pilot phase\n\nCustomer reaction:\nAgreed to Phase 1 pilot evaluation\n\nOutcome:\nwon\n\nWhy:\nPilot phase de-risked initial capital outlay\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nStructure high-tier quotes with phase 1 pilot options when price resistance occurs\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep-abc-chat",
+      "deal_id": "D-ABC-100",
+      "source_ids": [],
+      "outcome": "won",
+      "extraction_confidence": 0.0,
+      "causal_confidence": 0.0,
+      "verification_status": "confirmed",
+      "verified_by_role": null,
+      "verified_at": null,
+      "valid_as_of": "2026-09-29"
+    }
+  },
+  "episode:ep-irrelevant": {
+    "document_id": "episode:ep-irrelevant",
+    "content": "[EPISODE]\nSituation:\nXYZ Corp cloud migration\n\nObjection:\nAWS data sovereignty concern\n\nTactic:\nProvided AWS local region compliance doc\n\nCustomer reaction:\nApproved deployment\n\nOutcome:\nwon\n\nWhy:\nCompliance doc satisfied legal team\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nProvide region compliance docs for AWS deals\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep-irrelevant",
+      "deal_id": "D-XYZ",
+      "source_ids": [],
+      "outcome": "won",
+      "extraction_confidence": 0.0,
+      "causal_confidence": 0.0,
+      "verification_status": "confirmed",
+      "verified_by_role": null,
+      "verified_at": null,
+      "valid_as_of": "2026-09-29"
+    }
+  },
+  "episode:ep-trace-chat-1": {
+    "document_id": "episode:ep-trace-chat-1",
+    "content": "[EPISODE]\nSituation:\nTrace test situation query\n\nObjection:\nTrace test objection\n\nTactic:\nTrace test tactic\n\nCustomer reaction:\nTrace test reaction\n\nOutcome:\nwon\n\nWhy:\nTrace test why\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nTrace test lesson\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep-trace-chat-1",
+      "deal_id": "D-TRACE",
+      "source_ids": [
+        "crm_abc_001"
+      ],
+      "outcome": "won",
+      "extraction_confidence": 0.0,
+      "causal_confidence": 0.0,
+      "verification_status": "confirmed",
+      "verified_by_role": null,
+      "verified_at": null,
+      "valid_as_of": "2026-09-29"
+    }
+  },
+  "episode:ep-irrelevant-99": {
+    "document_id": "episode:ep-irrelevant-99",
+    "content": "[EPISODE]\nSituation:\nCloud infrastructure compliance review\n\nObjection:\nAWS data sovereignty concern\n\nTactic:\nProvided AWS local region compliance doc\n\nCustomer reaction:\nApproved deployment\n\nOutcome:\nwon\n\nWhy:\nCompliance doc satisfied legal team\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nProvide region compliance docs for AWS deals\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep-irrelevant-99",
+      "deal_id": "D-XYZ-99",
+      "source_ids": [],
+      "outcome": "won",
+      "extraction_confidence": 0.0,
+      "causal_confidence": 0.0,
+      "verification_status": "confirmed",
+      "verified_by_role": null,
+      "verified_at": null,
+      "valid_as_of": "2026-09-29"
+    }
   }
 }

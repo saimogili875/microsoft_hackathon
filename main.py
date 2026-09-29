@@ -1,6 +1,6 @@
 """
-Main Entry Point for Deal Intelligence Agent Data Pipeline CLI.
-Supports Mode 01 Live Calls, Mode 02 Historical Ingestion, Change Detection, and Report Generation.
+Main Entry Point for Deal Intelligence Agent Data Pipeline CLI v2.1
+Supports Mode 01 Live Calls, Mode 02 Historical Ingestion & Manual Chat, Change Detection, Groq Reasoning, and Reports.
 """
 
 import sys
@@ -13,13 +13,18 @@ from app.models.change_event import ClientState
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Deal Intelligence Data Pipeline CLI v2.0")
+    parser = argparse.ArgumentParser(description="Deal Intelligence Data Pipeline CLI v2.1")
     subparsers = parser.add_subparsers(dest="command")
 
     # Ingest subcommand (Mode 02)
     ingest_parser = subparsers.add_parser("ingest", help="Ingest a historical dataset file (Mode 02)")
     ingest_parser.add_argument("--file", required=True, help="Path to input file (.json, .csv, .txt, etc.)")
     ingest_parser.add_argument("--type", default="auto", help="Source type label (default: auto)")
+
+    # Manual Chat subcommand (Mode 02)
+    chat_parser = subparsers.add_parser("chat", help="Manual salesperson chat using Hindsight RECALL + Groq Reasoning")
+    chat_parser.add_argument("--query", required=True, help="Salesperson question string")
+    chat_parser.add_argument("--client", help="Optional target client context")
 
     # Live Call subcommand (Mode 01)
     live_parser = subparsers.add_parser("live", help="Simulate or send a live call chunk (Mode 01)")
@@ -56,6 +61,13 @@ def main():
         print("Ingestion Result:")
         print(json.dumps(res, indent=2))
 
+    elif args.command == "chat":
+        res = pipeline.chat(args.query, client_context=args.client)
+        print("\n=== MANUAL SALES CHAT RESPONSE (Hindsight RECALL -> Groq Reasoning) ===")
+        print(f"Query: {res['user_query']}")
+        print(f"Hindsight Memories Recalled: {len(res['hindsight_memories_used'])}\n")
+        print(res["answer"])
+
     elif args.command == "live":
         chunk = LiveTranscriptChunk(
             session_id=args.session_id,
@@ -83,7 +95,6 @@ def main():
             print(json.dumps(res, indent=2))
 
     elif args.command == "report":
-        # Demo report generation with default context
         state = ClientState(
             deal_id="D-DEMO-001",
             customer_context="Enterprise Logistics Inc",
