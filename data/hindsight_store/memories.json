@@ -1,50 +1,35 @@
 {
   "episode:ep-hist-1": {
     "document_id": "episode:ep-hist-1",
-    "content": "[EPISODE]\nSituation:\nCompetitor price parity deal\n\nObjection:\nImplementation cost too high\n\nTactic:\nPhased rollout worked when competitor was at price parity\n\nCustomer reaction:\nAgreed to trial phase\n\nOutcome:\nwon\n\nWhy:\nPhased pilot de-risked upfront capital\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nPhased rollout worked when competitor was at price parity\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "content": "[EPISODE]\n\nSituation:\nCompetitor price parity deal\n\nObjection:\nImplementation cost too high\n\nTactic:\nPhased rollout worked when competitor was at price parity\n\nCustomer reaction:\nAgreed to trial phase\n\nOutcome:\nwon\n\nWhy:\nPhased pilot de-risked upfront capital\n\nLesson:\nPhased rollout worked when competitor was at price parity\n\nVerification status:\nconfirmed",
     "metadata": {
       "episode_id": "ep-hist-1",
       "deal_id": "D-PREV",
-      "source_ids": [],
-      "outcome": "won",
-      "extraction_confidence": 0.0,
-      "causal_confidence": 0.0,
       "verification_status": "confirmed",
-      "verified_by_role": null,
-      "verified_at": null,
-      "valid_as_of": "2026-09-29"
+      "source_ids": [],
+      "causal_confidence": 0.0
     }
   },
   "episode:ep-hist-abc": {
     "document_id": "episode:ep-hist-abc",
-    "content": "[EPISODE]\nSituation:\nABC Logistics pricing discussion in 2025\n\nObjection:\nCompetitor X quote\n\nTactic:\nOffered phased rollout\n\nCustomer reaction:\nAgreed to pilot\n\nOutcome:\nwon\n\nWhy:\nPhased pilot de-risked upfront capital\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nPhased rollout works when competitor price is at parity (\u20b910L)\n\nPricing context:\nCompetitor X price \u2248 \u20b910L\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics pricing discussion in 2025\n\nObjection:\nCompetitor X quote\n\nTactic:\nOffered phased rollout\n\nCustomer reaction:\nAgreed to pilot\n\nOutcome:\nwon\n\nWhy:\nPhased pilot de-risked upfront capital\n\nLesson:\nPhased rollout works when competitor price is at parity (\u20b910L)\n\nPricing context:\nCompetitor X price \u2248 \u20b910L\n\nVerification status:\nconfirmed",
     "metadata": {
       "episode_id": "ep-hist-abc",
       "deal_id": "D-ABC-100",
-      "source_ids": [],
-      "outcome": "won",
-      "extraction_confidence": 0.0,
-      "causal_confidence": 0.0,
       "verification_status": "confirmed",
-      "verified_by_role": null,
-      "verified_at": null,
-      "valid_as_of": "2026-09-29"
+      "source_ids": [],
+      "causal_confidence": 0.0
     }
   },
   "episode:ep-abc-chat": {
     "document_id": "episode:ep-abc-chat",
-    "content": "[EPISODE]\nSituation:\nABC Logistics implementation budget objection\n\nObjection:\nImplementation cost too high\n\nTactic:\nOffered 3-phase modular rollout starting with \u20b94L pilot phase\n\nCustomer reaction:\nAgreed to Phase 1 pilot evaluation\n\nOutcome:\nwon\n\nWhy:\nPilot phase de-risked initial capital outlay\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nStructure high-tier quotes with phase 1 pilot options when price resistance occurs\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics implementation budget objection\n\nObjection:\nImplementation cost too high\n\nTactic:\nOffered 3-phase modular rollout starting with \u20b94L pilot phase\n\nCustomer reaction:\nAgreed to Phase 1 pilot evaluation\n\nOutcome:\nwon\n\nWhy:\nPilot phase de-risked initial capital outlay\n\nLesson:\nStructure high-tier quotes with phase 1 pilot options when price resistance occurs\n\nVerification status:\nconfirmed",
     "metadata": {
       "episode_id": "ep-abc-chat",
       "deal_id": "D-ABC-100",
-      "source_ids": [],
-      "outcome": "won",
-      "extraction_confidence": 0.0,
-      "causal_confidence": 0.0,
       "verification_status": "confirmed",
-      "verified_by_role": null,
-      "verified_at": null,
-      "valid_as_of": "2026-09-29"
+      "source_ids": [],
+      "causal_confidence": 0.0
     }
   },
   "episode:ep-irrelevant": {
@@ -65,36 +50,26 @@
   },
   "episode:ep-trace-chat-1": {
     "document_id": "episode:ep-trace-chat-1",
-    "content": "[EPISODE]\nSituation:\nTrace test situation query\n\nObjection:\nTrace test objection\n\nTactic:\nTrace test tactic\n\nCustomer reaction:\nTrace test reaction\n\nOutcome:\nwon\n\nWhy:\nTrace test why\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nTrace test lesson\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "content": "[EPISODE]\n\nSituation:\nTrace test situation query\n\nObjection:\nTrace test objection\n\nTactic:\nTrace test tactic\n\nCustomer reaction:\nTrace test reaction\n\nOutcome:\nwon\n\nWhy:\nTrace test why\n\nLesson:\nTrace test lesson\n\nVerification status:\nconfirmed",
     "metadata": {
       "episode_id": "ep-trace-chat-1",
       "deal_id": "D-TRACE",
+      "verification_status": "confirmed",
       "source_ids": [
         "crm_abc_001"
       ],
-      "outcome": "won",
-      "extraction_confidence": 0.0,
-      "causal_confidence": 0.0,
-      "verification_status": "confirmed",
-      "verified_by_role": null,
-      "verified_at": null,
-      "valid_as_of": "2026-09-29"
+      "causal_confidence": 0.0
     }
   },
   "episode:ep-irrelevant-99": {
     "document_id": "episode:ep-irrelevant-99",
-    "content": "[EPISODE]\nSituation:\nCloud infrastructure compliance review\n\nObjection:\nAWS data sovereignty concern\n\nTactic:\nProvided AWS local region compliance doc\n\nCustomer reaction:\nApproved deployment\n\nOutcome:\nwon\n\nWhy:\nCompliance doc satisfied legal team\n\nApplies when:\nGeneral sales negotiations\n\nDid not hold when:\nNone identified\n\nLesson:\nProvide region compliance docs for AWS deals\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "content": "[EPISODE]\n\nSituation:\nCloud infrastructure compliance review\n\nObjection:\nAWS data sovereignty concern\n\nTactic:\nProvided AWS local region compliance doc\n\nCustomer reaction:\nApproved deployment\n\nOutcome:\nwon\n\nWhy:\nCompliance doc satisfied legal team\n\nLesson:\nProvide region compliance docs for AWS deals\n\nVerification status:\nconfirmed",
     "metadata": {
       "episode_id": "ep-irrelevant-99",
       "deal_id": "D-XYZ-99",
-      "source_ids": [],
-      "outcome": "won",
-      "extraction_confidence": 0.0,
-      "causal_confidence": 0.0,
       "verification_status": "confirmed",
-      "verified_by_role": null,
-      "verified_at": null,
-      "valid_as_of": "2026-09-29"
+      "source_ids": [],
+      "causal_confidence": 0.0
     }
   },
   "episode:ep_d0c856fa78": {
@@ -236,6 +211,118 @@
       "verified_by_role": "account_executive",
       "verified_at": "2026-09-29T17:34:36.733950+00:00",
       "valid_as_of": "2026-09-29"
+    }
+  },
+  "deal_memory:DEAL-002": {
+    "document_id": "deal_memory:DEAL-002",
+    "content": "[DEAL HISTORY EXPERIENCES]\nCase: DEAL-002\nCustomer Context: Deal Case DEAL-002\nOutcome: WIN\nAI Model Prediction: LOSS (Win Prob: 41.2%)\nPrice Factors: price_margin_percentage, price_discount_percentage\nProduct Factors: product_complexity_score, product_config_count\nOrganization Factors: None\nExpert Observation: Case DEAL-002 [EXPERT-02 vs AI]: Predictions DISAGREED (WIN vs LOSS). Agreed Factors: [customer_existing_client]. Expert-Only: [organization_partner_involved, price_total_amount]. AI-Identified: [price_margin_percentage, price_discount_percentage, product_complexity_score, product_config_count].\nExtracted Lesson: In WIN deals with Deal Case DEAL-002, key influencers were price_margin_percentage, price_discount_percentage, product_complexity_score, product_config_count.\n",
+    "metadata": {
+      "case_id": "DEAL-002",
+      "outcome": "WIN",
+      "timestamp": "2026-09-29T18:00:24.834261+00:00",
+      "verification_status": "confirmed"
+    }
+  },
+  "deal_memory:DEAL-005": {
+    "document_id": "deal_memory:DEAL-005",
+    "content": "[DEAL HISTORY EXPERIENCES]\nCase: DEAL-005\nCustomer Context: Deal Case DEAL-005\nOutcome: WIN\nAI Model Prediction: LOSS (Win Prob: 24.9%)\nPrice Factors: price_margin_percentage\nProduct Factors: product_complexity_score, product_config_count\nOrganization Factors: None\nExpert Observation: Case DEAL-005 [EXPERT-02 vs AI]: Predictions DISAGREED (WIN vs LOSS). Agreed Factors: [product_complexity_score]. Expert-Only: [organization_team_size, price_total_amount]. AI-Identified: [customer_existing_client, customer_industry_Manufacturing, price_margin_percentage, product_config_count].\nExtracted Lesson: In WIN deals with Deal Case DEAL-005, key influencers were price_margin_percentage, product_complexity_score, product_config_count.\n",
+    "metadata": {
+      "case_id": "DEAL-005",
+      "outcome": "WIN",
+      "timestamp": "2026-09-29T18:00:24.835358+00:00",
+      "verification_status": "confirmed"
+    }
+  },
+  "deal_memory:DEAL-010": {
+    "document_id": "deal_memory:DEAL-010",
+    "content": "[DEAL HISTORY EXPERIENCES]\nCase: DEAL-010\nCustomer Context: Deal Case DEAL-010\nOutcome: WIN\nAI Model Prediction: WIN (Win Prob: 98.5%)\nPrice Factors: price_discount_percentage, price_margin_percentage\nProduct Factors: product_complexity_score\nOrganization Factors: None\nExpert Observation: Case DEAL-010 [EXPERT-01 vs AI]: Predictions AGREED (WIN vs WIN). Agreed Factors: [customer_existing_client]. Expert-Only: [organization_team_size, price_total_amount]. AI-Identified: [price_discount_percentage, product_complexity_score, customer_industry_Manufacturing, price_margin_percentage].\nExtracted Lesson: In WIN deals with Deal Case DEAL-010, key influencers were price_discount_percentage, price_margin_percentage, product_complexity_score.\n",
+    "metadata": {
+      "case_id": "DEAL-010",
+      "outcome": "WIN",
+      "timestamp": "2026-09-29T18:00:24.836368+00:00",
+      "verification_status": "confirmed"
+    }
+  },
+  "deal_memory:DEAL-014": {
+    "document_id": "deal_memory:DEAL-014",
+    "content": "[DEAL HISTORY EXPERIENCES]\nCase: DEAL-014\nCustomer Context: Deal Case DEAL-014\nOutcome: WIN\nAI Model Prediction: LOSS (Win Prob: 3.2%)\nPrice Factors: price_discount_percentage, price_margin_percentage\nProduct Factors: product_config_count, product_complexity_score\nOrganization Factors: None\nExpert Observation: Case DEAL-014 [EXPERT-02 vs AI]: Predictions AGREED (LOSS vs LOSS). Agreed Factors: [product_complexity_score, price_discount_percentage]. Expert-Only: [organization_team_size]. AI-Identified: [customer_existing_client, price_margin_percentage, product_config_count].\nExtracted Lesson: In WIN deals with Deal Case DEAL-014, key influencers were price_discount_percentage, price_margin_percentage, product_config_count, product_complexity_score.\n",
+    "metadata": {
+      "case_id": "DEAL-014",
+      "outcome": "WIN",
+      "timestamp": "2026-09-29T18:00:24.837188+00:00",
+      "verification_status": "confirmed"
+    }
+  },
+  "deal_memory:DEAL-017": {
+    "document_id": "deal_memory:DEAL-017",
+    "content": "[DEAL HISTORY EXPERIENCES]\nCase: DEAL-017\nCustomer Context: Deal Case DEAL-017\nOutcome: WIN\nAI Model Prediction: WIN (Win Prob: 83.5%)\nPrice Factors: price_discount_percentage, price_margin_percentage\nProduct Factors: product_complexity_score, product_config_count\nOrganization Factors: None\nExpert Observation: Case DEAL-017 [EXPERT-02 vs AI]: Predictions AGREED (WIN vs WIN). Agreed Factors: [product_complexity_score]. Expert-Only: [organization_partner_involved, price_total_amount]. AI-Identified: [price_discount_percentage, customer_existing_client, price_margin_percentage, product_config_count].\nExtracted Lesson: In WIN deals with Deal Case DEAL-017, key influencers were price_discount_percentage, price_margin_percentage, product_complexity_score, product_config_count.\n",
+    "metadata": {
+      "case_id": "DEAL-017",
+      "outcome": "WIN",
+      "timestamp": "2026-09-29T18:00:24.838005+00:00",
+      "verification_status": "confirmed"
+    }
+  },
+  "deal_memory:DEAL-019": {
+    "document_id": "deal_memory:DEAL-019",
+    "content": "[DEAL HISTORY EXPERIENCES]\nCase: DEAL-019\nCustomer Context: Deal Case DEAL-019\nOutcome: WIN\nAI Model Prediction: WIN (Win Prob: 77.7%)\nPrice Factors: price_margin_percentage, price_discount_percentage\nProduct Factors: product_complexity_score, product_config_count\nOrganization Factors: None\nExpert Observation: Case DEAL-019 [EXPERT-01 vs AI]: Predictions AGREED (WIN vs WIN). Agreed Factors: [customer_existing_client]. Expert-Only: [organization_team_size, price_total_amount]. AI-Identified: [product_complexity_score, price_margin_percentage, product_config_count, price_discount_percentage].\nExtracted Lesson: In WIN deals with Deal Case DEAL-019, key influencers were price_margin_percentage, price_discount_percentage, product_complexity_score, product_config_count.\n",
+    "metadata": {
+      "case_id": "DEAL-019",
+      "outcome": "WIN",
+      "timestamp": "2026-09-29T18:00:24.838589+00:00",
+      "verification_status": "confirmed"
+    }
+  },
+  "episode:ep_625eedac01": {
+    "document_id": "episode:ep_625eedac01",
+    "content": "[EPISODE]\n\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerification status:\nconfirmed",
+    "metadata": {
+      "episode_id": "ep_625eedac01",
+      "deal_id": "D-TRACE-9",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_31d5454120": {
+    "document_id": "episode:ep_31d5454120",
+    "content": "[EPISODE]\n\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerification status:\nconfirmed",
+    "metadata": {
+      "episode_id": "ep_31d5454120",
+      "deal_id": "D-TRACE-9",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_4a3e485f6b": {
+    "document_id": "episode:ep_4a3e485f6b",
+    "content": "[EPISODE]\n\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerification status:\nconfirmed",
+    "metadata": {
+      "episode_id": "ep_4a3e485f6b",
+      "deal_id": "D-TRACE-9",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_bd715b73ba": {
+    "document_id": "episode:ep_bd715b73ba",
+    "content": "[EPISODE]\n\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_bd715b73ba",
+      "deal_id": "D-TRACE-9",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "causal_confidence": 0.35
     }
   }
 }

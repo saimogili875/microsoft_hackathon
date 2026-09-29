@@ -1,0 +1,572 @@
+[
+  {
+    "case_id": "DEAL-001",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 2,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.69,
+    "expert_confidence": 0.85,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Manufacturing market conditions and discount of 5.9%.",
+    "rating_prediction_alone": 3,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-002",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.51,
+    "expert_confidence": 0.84,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Retail market conditions and discount of 16.9%.",
+    "rating_prediction_alone": 3,
+    "rating_prediction_and_explanation": 5
+  },
+  {
+    "case_id": "DEAL-003",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.61,
+    "expert_confidence": 0.74,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Healthcare market conditions and discount of 32.1%.",
+    "rating_prediction_alone": 5,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-004",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 2,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.44,
+    "expert_confidence": 0.73,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Healthcare market conditions and discount of 27.4%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 7
+  },
+  {
+    "case_id": "DEAL-005",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.7,
+    "expert_confidence": 0.87,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Manufacturing market conditions and discount of 19.0%.",
+    "rating_prediction_alone": 3,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-006",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.35,
+    "expert_confidence": 0.82,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Healthcare market conditions and discount of 16.9%.",
+    "rating_prediction_alone": 3,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-007",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.33,
+    "expert_confidence": 0.88,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Manufacturing market conditions and discount of 34.1%.",
+    "rating_prediction_alone": 5,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-008",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.62,
+    "expert_confidence": 0.75,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Software market conditions and discount of 23.1%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 7
+  },
+  {
+    "case_id": "DEAL-009",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 2,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.34,
+    "expert_confidence": 0.75,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Logistics market conditions and discount of 21.6%.",
+    "rating_prediction_alone": 5,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-010",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.81,
+    "expert_confidence": 0.95,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Manufacturing market conditions and discount of 14.7%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 7
+  },
+  {
+    "case_id": "DEAL-011",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 2,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.18,
+    "expert_confidence": 0.87,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Financial Services market conditions and discount of 29.4%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 7
+  },
+  {
+    "case_id": "DEAL-012",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 2,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.44,
+    "expert_confidence": 0.81,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "customer_existing_client",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Software market conditions and discount of 36.2%.",
+    "rating_prediction_alone": 3,
+    "rating_prediction_and_explanation": 5
+  },
+  {
+    "case_id": "DEAL-013",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 2,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.47,
+    "expert_confidence": 0.73,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Software market conditions and discount of 22.7%.",
+    "rating_prediction_alone": 3,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-014",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 2,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.35,
+    "expert_confidence": 0.84,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Financial Services market conditions and discount of 26.2%.",
+    "rating_prediction_alone": 5,
+    "rating_prediction_and_explanation": 5
+  },
+  {
+    "case_id": "DEAL-015",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.44,
+    "expert_confidence": 0.94,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Healthcare market conditions and discount of 38.1%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-016",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.72,
+    "expert_confidence": 0.78,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "customer_existing_client",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Manufacturing market conditions and discount of 39.2%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-017",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 2,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.66,
+    "expert_confidence": 0.85,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Retail market conditions and discount of 11.8%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-018",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.55,
+    "expert_confidence": 0.87,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "customer_existing_client",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Financial Services market conditions and discount of 39.4%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 7
+  },
+  {
+    "case_id": "DEAL-019",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.54,
+    "expert_confidence": 0.86,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Healthcare market conditions and discount of 24.4%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-020",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.55,
+    "expert_confidence": 0.76,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "customer_existing_client",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Retail market conditions and discount of 38.3%.",
+    "rating_prediction_alone": 3,
+    "rating_prediction_and_explanation": 5
+  },
+  {
+    "case_id": "DEAL-021",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.78,
+    "expert_confidence": 0.81,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Retail market conditions and discount of 12.7%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-022",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.66,
+    "expert_confidence": 0.84,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Logistics market conditions and discount of 23.2%.",
+    "rating_prediction_alone": 5,
+    "rating_prediction_and_explanation": 5
+  },
+  {
+    "case_id": "DEAL-023",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.48,
+    "expert_confidence": 0.87,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Financial Services market conditions and discount of 19.7%.",
+    "rating_prediction_alone": 5,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-024",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "LOSS",
+    "expert_predicted_prob": 0.45,
+    "expert_confidence": 0.76,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Financial Services market conditions and discount of 37.2%.",
+    "rating_prediction_alone": 3,
+    "rating_prediction_and_explanation": 7
+  },
+  {
+    "case_id": "DEAL-025",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.79,
+    "expert_confidence": 0.89,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Retail market conditions and discount of 23.9%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 5
+  },
+  {
+    "case_id": "DEAL-026",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.73,
+    "expert_confidence": 0.79,
+    "expert_important_factors": [
+      "price_total_amount",
+      "product_complexity_score",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Software market conditions and discount of 10.7%.",
+    "rating_prediction_alone": 5,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-027",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.66,
+    "expert_confidence": 0.78,
+    "expert_important_factors": [
+      "price_discount_percentage",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Manufacturing market conditions and discount of 27.7%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 5
+  },
+  {
+    "case_id": "DEAL-028",
+    "expert_id": "EXPERT-01",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 4,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.59,
+    "expert_confidence": 0.83,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_team_size"
+    ],
+    "expert_explanation": "Based on Manufacturing market conditions and discount of 20.8%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 5
+  },
+  {
+    "case_id": "DEAL-029",
+    "expert_id": "EXPERT-02",
+    "q1_b2b_experience": "11+ years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Maybe",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.61,
+    "expert_confidence": 0.77,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Financial Services market conditions and discount of 19.2%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 6
+  },
+  {
+    "case_id": "DEAL-030",
+    "expert_id": "EXPERT-03",
+    "q1_b2b_experience": "3-10 years",
+    "q2_ai_tool_usage": 3,
+    "q3_predicting_experience": "Regularly predicts deal win probability in CRM",
+    "q4_information_sufficiency": "Yes",
+    "q5_assessed_outcome": "WIN",
+    "expert_predicted_prob": 0.75,
+    "expert_confidence": 0.78,
+    "expert_important_factors": [
+      "price_total_amount",
+      "customer_existing_client",
+      "organization_partner_involved"
+    ],
+    "expert_explanation": "Based on Software market conditions and discount of 11.7%.",
+    "rating_prediction_alone": 4,
+    "rating_prediction_and_explanation": 6
+  }
+]

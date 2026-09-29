@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-09-29T18:00:24.839473+00:00",
+  "metrics": {
+    "balanced_accuracy": 0.7361,
+    "accuracy": 0.7333,
+    "precision": 0.8125,
+    "recall": 0.7222,
+    "f1_score": 0.7647,
+    "win_recall": 0.7222,
+    "loss_recall": 0.75,
+    "confusion_matrix": {
+      "TP": 13,
+      "FN": 5,
+      "FP": 3,
+      "TN": 9
+    }
+  },
+  "usefulness": {
+    "prediction_alone": 3.9667,
+    "prediction_and_explanation": 5.9333,
+    "difference": 1.9667,
+    "evaluations_count": 30
+  },
+  "feature_groups": {
+    "CUSTOMER": 1.6652,
+    "PRICE": 1.5515,
+    "PRODUCT": 0.8237,
+    "ORGANIZATION": 0.2001,
+    "OTHER": 0.0
+  }
+}

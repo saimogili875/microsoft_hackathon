@@ -1,135 +1,167 @@
 """
-Main Entry Point for Deal Intelligence Agent Data Pipeline CLI v2.1
-Supports Mode 01 Live Calls, Mode 02 Historical Ingestion & Manual Chat, Change Detection, Groq Reasoning, and Reports.
+Deal Intelligence Agent Research Prototype Master Orchestrator.
+Executes complete 12-phase pipeline:
+Raw CRM/CPQ Data -> Data Cleaning -> Feature Engineering (Price/Product/Org/Customer)
+-> XGBoost Model -> Balanced Accuracy & Confusion Matrix -> SHAP Explainability
+-> Sales Expert Evaluation (Q1-Q5) -> Expert vs AI Comparison
+-> Prediction Alone vs Prediction + Explanation Usefulness Evaluation
+-> Hindsight Retention -> 24-Section Research Report Generation.
 """
 
 import sys
-import argparse
-import json
 from pathlib import Path
-from app.services.pipeline import DealIntelligencePipeline
-from app.models.live_interaction import LiveTranscriptChunk
-from app.models.change_event import ClientState
+import json
+
+from app.data.loader import DataLoader
+from app.data.cleaner import DataCleaner
+from app.data.validator import DataValidator
+from app.data.feature_processor import FeatureProcessor
+from app.model.train import ModelTrainer
+from app.model.predict import ModelPredictor
+from app.model.evaluation import ModelEvaluator
+from app.explainability.shap_explainer import ShapExplainerService
+from app.explainability.feature_importance import FeatureImportanceAnalyzer
+from app.experts.expert_predictions import ExpertPredictionManager
+from app.experts.expert_comparison import ExpertAiComparisonEngine
+from app.evaluation.usefulness import UsefulnessEvaluator
+from app.evaluation.research_report import ResearchReportGenerator
+from app.hindsight.retain import HindsightRetainService
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Deal Intelligence Data Pipeline CLI v2.1")
-    subparsers = parser.add_subparsers(dest="command")
+    print("==================================================================")
+    print("🚀 B2B DEAL INTELLIGENCE AGENT — RESEARCH PROTOTYPE PIPELINE")
+    print("==================================================================")
 
-    # Ingest subcommand (Mode 02)
-    ingest_parser = subparsers.add_parser("ingest", help="Ingest a historical dataset file (Mode 02)")
-    ingest_parser.add_argument("--file", required=True, help="Path to input file (.json, .csv, .txt, etc.)")
-    ingest_parser.add_argument("--type", default="auto", help="Source type label (default: auto)")
+    # PATHS
+    data_file = Path("data/raw/deals_dataset.csv")
+    expert_file = Path("data/experts/expert_evaluations.json")
+    reports_dir = Path("reports/final_report")
+    shap_dir = Path("reports/shap")
 
-    # Manual Chat subcommand (Mode 02)
-    chat_parser = subparsers.add_parser("chat", help="Manual salesperson chat using Hindsight RECALL + Groq Reasoning")
-    chat_parser.add_argument("--query", required=True, help="Salesperson question string")
-    chat_parser.add_argument("--client", help="Optional target client context")
+    # PHASE 1: DATA LOADING
+    print("\n[PHASE 1] Loading CRM/CPQ Dataset...")
+    loader = DataLoader()
+    df_raw, load_report = loader.load_file(data_file)
+    print(f"-> Ingested {load_report.total_records} raw deal records ({load_report.win_count} WIN / {load_report.loss_count} LOSS).")
 
-    # Live Call subcommand (Mode 01)
-    live_parser = subparsers.add_parser("live", help="Simulate or send a live call chunk (Mode 01)")
-    live_parser.add_argument("--session-id", required=True, help="Call session identifier")
-    live_parser.add_argument("--speaker", default="Customer", help="Speaker name (Rep/Customer)")
-    live_parser.add_argument("--text", required=True, help="Transcript text snippet")
-    live_parser.add_argument("--finalize", action="store_true", help="Finalize call session post-meeting")
+    # PHASE 2: DATA CLEANING & LEAKAGE PROTECTION
+    print("\n[PHASE 2] Cleaning Data & Enforcing Post-Offer Leakage Protection...")
+    cleaner = DataCleaner()
+    df_clean, clean_report = cleaner.clean(df_raw)
+    print(f"-> Final valid records: {clean_report.final_valid_records} (Duplicates removed: {clean_report.duplicates_removed}).")
 
-    # Review subcommand
-    review_parser = subparsers.add_parser("review", help="Review pending episodes")
-    review_parser.add_argument("--list", action="store_true", help="List all pending episodes")
-    review_parser.add_argument("--episode-id", help="Target episode ID")
-    review_parser.add_argument("--action", choices=["confirm", "correct", "reject"], help="Verification action")
-    review_parser.add_argument("--role", default="account_executive", help="Reviewer role")
+    # PHASE 3: FEATURE ENGINEERING & CORE FEATURE GROUPS
+    print("\n[PHASE 3] Feature Engineering & Core Feature Group Mapping...")
+    validator = DataValidator()
+    val_report = validator.validate(df_clean)
+    processor = FeatureProcessor()
+    dataset = processor.process(df_clean)
+    print(f"-> Processed {len(dataset.feature_names)} encoded features across Core Groups:")
+    for grp, count in dataset.feature_group_summary.items():
+        print(f"   * {grp}: {count} features")
 
-    # Report subcommand
-    report_parser = subparsers.add_parser("report", help="Generate pipeline reports")
-    report_parser.add_argument("--type", choices=["client_relationship", "live_interaction", "post_meeting_change", "deal_intelligence", "memory_update"], required=True, help="Report type")
+    # PHASE 4: XGBOOST MODEL TRAINING
+    print("\n[PHASE 4] Training XGBoost Classifier (Reproducible Random State = 42)...")
+    trainer = ModelTrainer(test_size=0.20, random_state=42)
+    train_res = trainer.train(dataset)
+    print(f"-> Fitted {train_res.model.model_type} model on {len(train_res.X_train)} train cases.")
 
-    # Trace subcommand
-    trace_parser = subparsers.add_parser("trace", help="Trace lineage of a memory or episode")
-    trace_parser.add_argument("--episode-id", required=True, help="Target episode ID")
+    # PHASE 5: MODEL INFERENCE & EVALUATION (BALANCED ACCURACY)
+    print("\n[PHASE 5] Evaluating Model Performance & Computing Balanced Accuracy...")
+    predictor = ModelPredictor()
+    pred_res = predictor.predict_dataset(train_res.model, train_res.X_test, train_res.test_case_ids)
 
-    # Recall subcommand
-    recall_parser = subparsers.add_parser("recall", help="Recall retained memories from Hindsight")
-    recall_parser.add_argument("--query", required=True, help="Search query string")
+    evaluator = ModelEvaluator()
+    metrics = evaluator.evaluate(train_res.y_test.values, pred_res.y_pred)
+    print(f"-> 🎯 BALANCED ACCURACY: {metrics.balanced_accuracy:.4f}")
+    print(f"-> Precision: {metrics.precision:.4f} | Recall: {metrics.recall:.4f} | F1: {metrics.f1_score:.4f}")
+    print(f"-> WIN Recall: {metrics.win_recall:.4f} | LOSS Recall: {metrics.loss_recall:.4f}")
+    print(f"-> Confusion Matrix: {metrics.confusion_matrix}")
 
-    args = parser.parse_args()
-    pipeline = DealIntelligencePipeline()
+    # PHASE 6: SALES EXPERT PREDICTIONS & Q1-Q5 SCHEMA
+    print("\n[PHASE 6] Loading Sales Expert Evaluations (Q1-Q5)...")
+    expert_mgr = ExpertPredictionManager()
+    expert_recs = expert_mgr.load_file(expert_file)
+    print(f"-> Loaded {len(expert_recs)} independent Sales Expert evaluation responses.")
 
-    if args.command == "ingest":
-        print(f"Processing file: {args.file}")
-        res = pipeline.process_file(args.file, source_type=args.type)
-        print("Ingestion Result:")
-        print(json.dumps(res, indent=2))
+    # PHASE 7: SHAP EXPLAINABILITY
+    print("\n[PHASE 7] Generating SHAP Explanations & Global Feature Importance...")
+    shap_service = ShapExplainerService(train_res.model, dataset.feature_to_group)
+    case_explanations, shap_values = shap_service.explain_dataset(
+        train_res.X_test, train_res.test_case_ids, pred_res.y_pred, pred_res.y_proba
+    )
 
-    elif args.command == "chat":
-        res = pipeline.chat(args.query, client_context=args.client)
-        print("\n=== MANUAL SALES CHAT RESPONSE (Hindsight RECALL -> Groq Reasoning) ===")
-        print(f"Query: {res['user_query']}")
-        print(f"Hindsight Memories Recalled: {len(res['hindsight_memories_used'])}\n")
-        print(res["answer"])
+    feat_analyzer = FeatureImportanceAnalyzer()
+    feat_importances, group_shaps = feat_analyzer.analyze(train_res.X_test, shap_values, dataset.feature_to_group)
 
-    elif args.command == "live":
-        chunk = LiveTranscriptChunk(
-            session_id=args.session_id,
-            speaker=args.speaker,
-            text=args.text,
-        )
-        res = pipeline.process_live_chunk(chunk)
-        print("Live Chunk Signal Extraction & Hindsight Recall:")
-        print(json.dumps(res, indent=2))
+    print("-> Top Core Feature Groups by SHAP Importance:")
+    for g in group_shaps:
+        print(f"   * {g.feature_group}: SHAP Total = {g.total_shap_importance:.4f} ({g.percentage_importance}%)")
 
-        if args.finalize:
-            fin = pipeline.finalize_live_session(args.session_id)
-            print("\nPost-Meeting Episode Candidate Generated:")
-            print(fin["episode_candidate"].model_dump())
+    shap_service.generate_shap_plots(train_res.X_test, shap_values, shap_dir)
 
-    elif args.command == "review":
-        if args.list:
-            pending = pipeline.verification_service.get_pending_episodes()
-            print(f"Pending Review Episodes ({len(pending)}):")
-            for ep in pending:
-                print(f"  - [{ep.episode_id}] Deal: {ep.deal_id} | Situation: {ep.situation[:60]}... | Status: {ep.verification_status}")
-        elif args.episode_id and args.action:
-            res = pipeline.verify_and_retain(args.episode_id, action=args.action, role=args.role)
-            print("Verification Result:")
-            print(json.dumps(res, indent=2))
+    # PHASE 8: EXPERT VS AI COMPARISON
+    print("\n[PHASE 8] Executing Expert vs. AI + SHAP Comparison Layer...")
+    comparison_engine = ExpertAiComparisonEngine()
+    case_comparisons = []
+    case_expl_dict = {ce.case_id: ce for ce in case_explanations}
+    case_pred_dict = {cp.case_id: cp for cp in pred_res.case_predictions}
 
-    elif args.command == "report":
-        state = ClientState(
-            deal_id="D-DEMO-001",
-            customer_context="Enterprise Logistics Inc",
-            stakeholders=["John Doe (VP Ops)", "Jane Smith (CTO)"],
-            tools_used=["Salesforce", "Legacy ERP"],
-            competitors=["Competitor X"],
-            active_objections=["Implementation cost too high"],
-        )
-        pending_episodes = pipeline.verification_service.get_pending_episodes()
+    for exp_rec in expert_recs:
+        cid = exp_rec.case_id
+        if cid in case_expl_dict and cid in case_pred_dict:
+            comp_res = comparison_engine.compare_case(case_pred_dict[cid], case_expl_dict[cid], exp_rec)
+            case_comparisons.append(comp_res)
 
-        context = {
-            "client_state": state,
-            "episodes": pending_episodes,
-            "historical_records": [],
-            "recalls": [],
-            "changes": [],
-        }
-        report = pipeline.generate_report(args.type, context)
-        print(report)
+    print(f"-> Evaluated {len(case_comparisons)} Expert vs AI case comparisons.")
+    if case_comparisons:
+        agree_count = sum(1 for c in case_comparisons if c.prediction_agreement)
+        print(f"   * Prediction Agreement Rate: {agree_count}/{len(case_comparisons)} ({agree_count/len(case_comparisons):.1%})")
 
-    elif args.command == "trace":
-        res = pipeline.traceability_service.trace_by_episode_id(args.episode_id)
-        print("Traceability Chain:")
-        print(json.dumps(res, indent=2))
+    # PHASE 9: PREDICTION ALONE VS PREDICTION + EXPLANATION EVALUATION
+    print("\n[PHASE 9] Evaluating Prediction Alone vs. Prediction + Explanation Usefulness...")
+    usefulness_eval = UsefulnessEvaluator()
+    usefulness_res = usefulness_eval.evaluate_records(expert_recs)
+    print(f"-> {usefulness_res.summary_text}")
 
-    elif args.command == "recall":
-        res = pipeline.hindsight_client.recall(args.query)
-        print("Matching Hindsight Memories:")
-        for idx, item in enumerate(res, 1):
-            print(f"\n--- [{idx}] Score: {item['score']} | Doc ID: {item['document_id']} ---")
-            print(item["content"])
+    # PHASE 10: HINDSIGHT MEMORY RETENTION
+    print("\n[PHASE 10] Retaining Verified Case Experiences in Hindsight Memory...")
+    retain_service = HindsightRetainService()
+    retained_count = 0
+    for comp in case_comparisons[:10]:  # Retain top case experiences
+        cid = comp.case_id
+        if cid in case_expl_dict:
+            actual = "WIN" if train_res.y_test.iloc[0] == 1 else "LOSS"
+            retain_service.retain_case_experience(
+                case_id=cid,
+                customer_context=f"Deal Case {cid}",
+                actual_outcome=actual,
+                shap_explanation=case_expl_dict[cid],
+                comparison=comp,
+            )
+            retained_count += 1
+    print(f"-> Retained {retained_count} verified deal case experiences in Hindsight memory.")
 
-    else:
-        parser.print_help()
+    # PHASE 11 & 12: RESEARCH REPORT GENERATION
+    print("\n[PHASE 12] Generating Final 24-Section Machine Learning Research Report...")
+    report_gen = ResearchReportGenerator()
+    report_md, report_path = report_gen.generate_report(
+        load_report=load_report,
+        clean_report=clean_report,
+        val_report=val_report,
+        dataset=dataset,
+        metrics=metrics,
+        group_shaps=group_shaps,
+        case_comparisons=case_comparisons,
+        usefulness_res=usefulness_res,
+        output_dir=reports_dir,
+    )
+    print(f"-> Saved master research report to {report_path}")
 
+    print("\n==================================================================")
+    print("✅ PROTOTYPE PIPELINE SUCCESSFULLY EXECUTED!")
+    print("==================================================================")
 
 if __name__ == "__main__":
     main()

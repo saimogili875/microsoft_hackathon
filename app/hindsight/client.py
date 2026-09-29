@@ -3,7 +3,7 @@ Hindsight Client abstraction handling interaction with Hindsight Memory.
 Supports official Hindsight API HTTP integration as well as local mock adapter.
 """
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 import json
 import logging
 from pathlib import Path
@@ -36,10 +36,24 @@ class HindsightClient:
         self._memory_store: Dict[str, HindsightMemoryPayload] = {}
         self._load_local_store()
 
-    def retain(self, payload: HindsightMemoryPayload) -> Dict[str, Any]:
+    def retain(
+        self,
+        payload_or_doc_id: Union[HindsightMemoryPayload, str],
+        content: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
         """
         Retains a verified memory payload in Hindsight with a stable document ID.
         """
+        if isinstance(payload_or_doc_id, str):
+            payload = HindsightMemoryPayload(
+                document_id=payload_or_doc_id,
+                content=content or "",
+                metadata=metadata or {},
+            )
+        else:
+            payload = payload_or_doc_id
+
         doc_id = payload.document_id
         # Log tag (NEVER log secrets!)
         print(f"[HINDSIGHT] RETAIN -> Doc ID: {doc_id} | Length: {len(payload.content)} chars")
