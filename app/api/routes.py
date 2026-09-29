@@ -69,11 +69,32 @@ if FASTAPI_AVAILABLE:
         except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
 
+    class Arch2QueryPayload(BaseModel):
+        query: str
+        client_id: Optional[str] = None
+        deal_id: Optional[str] = None
+        stage: Optional[str] = None
+        current_context: Optional[Dict[str, Any]] = None
+
     @app.post("/api/v1/chat")
     def manual_chat(payload: ChatRequestPayload):
         try:
             res = pipeline.chat(payload.user_query, client_context=payload.client_context)
             return res
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=str(e))
+
+    @app.post("/api/v1/arch2/query")
+    def arch2_query(payload: Arch2QueryPayload):
+        try:
+            res = pipeline.arch2_query(
+                query=payload.query,
+                client_id=payload.client_id,
+                deal_id=payload.deal_id,
+                stage=payload.stage,
+                current_context=payload.current_context,
+            )
+            return res.model_dump()
         except Exception as e:
             raise HTTPException(status_code=400, detail=str(e))
 
