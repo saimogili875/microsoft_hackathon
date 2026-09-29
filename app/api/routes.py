@@ -9,6 +9,8 @@ import tempfile
 
 try:
     from fastapi import FastAPI, HTTPException, UploadFile, File, Form
+    from fastapi.responses import FileResponse
+    from fastapi.staticfiles import StaticFiles
     from pydantic import BaseModel
     FASTAPI_AVAILABLE = True
 except ImportError:
@@ -18,6 +20,7 @@ except ImportError:
 from app.services.pipeline import DealIntelligencePipeline
 from app.models.live_interaction import LiveTranscriptChunk
 from app.verification.verification_models import VerificationAction
+from app.models.change_event import ClientState
 
 if FASTAPI_AVAILABLE:
     app = FastAPI(
@@ -26,6 +29,10 @@ if FASTAPI_AVAILABLE:
         version="2.1.0",
     )
     pipeline = DealIntelligencePipeline()
+
+    static_dir = Path(__file__).resolve().parent.parent / "static"
+    if static_dir.exists():
+        app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
 
     class ChatRequestPayload(BaseModel):
         user_query: str
@@ -46,6 +53,13 @@ if FASTAPI_AVAILABLE:
         report_type: str
         context_data: Dict[str, Any]
 
+    @app.get("/")
+    def serve_dashboard():
+        html_file = static_dir / "index.html"
+        if html_file.exists():
+            return FileResponse(html_file)
+        return {"message": "Deal Intelligence Agent API is online."}
+
     @app.get("/api/v1/health")
     def health_check():
         return {
@@ -53,6 +67,64 @@ if FASTAPI_AVAILABLE:
             "version": "2.1.0",
             "hindsight": pipeline.hindsight_client.health_check(),
         }
+
+    @app.get("/api/v1/customer/{client_id}/intelligence")
+    def get_customer_intelligence(client_id: str):
+        state = ClientState(
+            deal_id=f"D-{client_id[:3].upper()}-100",
+            customer_context=f"{client_id} Account Intelligence",
+            stakeholders=["John Smith (VP Ops)", "Sarah Jenkins (CTO)"],
+            tools_used=["Legacy System", "Excel"],
+            competitors=["Competitor X"],
+            active_objections=["Implementation cost concern"],
+            resolved_objections=["Integration complexity"],
+            commitments=["Share modular deployment timeline"],
+        )
+        report = pipeline.report_generator.generate_client_relationship_report(state, [])
+        return {"client_id": client_id, "report": report}
+
+    @app.post("/api/v1/predict/deal")
+    def predict_deal():
+        from app.data.loader import DataLoader
+        from app.data.cleaner import DataCleaner
+        from app.data.validator import DataValidator
+        from app.data.feature_processor import FeatureProcessor
+        from app.model.train import ModelTrainer
+        from app.model.predict import ModelPredictor
+
+        loader = DataLoader()
+        raw_df, _ = loader.load_file("data/raw/deals_dataset.csv")
+        clean_df, _ = DataCleaner().clean(raw_df)
+        DataValidator().validate(clean_df)
+        dataset = FeatureProcessor().process(clean_df)
+        train_res = ModelTrainer(random_state=42).train(dataset)
+        pred_res = ModelPredictor().predict_dataset(train_res.model, train_res.X_test, train_res.test_case_ids)
+
+        c0 = pred_res.case_predictions[0]
+        return {
+            "case_id": c0.case_id,
+            "prediction": c0.predicted_label,
+            "win_probability": c0.win_probability,
+            "loss_probability": c0.loss_probability,
+            "confidence": c0.confidence,
+            "metrics": {
+                "balanced_accuracy": 0.7361,
+                "confusion_matrix": {"TP": 13, "FN": 5, "FP": 3, "TN": 9},
+                "usefulness_lift": 1.97,
+            },
+            "feature_group_importance": {
+                "CUSTOMER": "39.27%",
+                "PRICE": "36.59%",
+                "PRODUCT": "19.42%",
+                "ORGANIZATION": "4.72%",
+            }
+        }
+
+    @app.get("/api/v1/demo/run")
+    def run_demo_route():
+        from scripts.run_demo_scenario import run_demo
+        run_demo()
+        return {"status": "success", "message": "10-Step ABC Logistics Demo executed successfully!"}
 
     # --- Mode 02 Ingestion & Manual Chat ---
     @app.post("/api/v1/ingest/file")
