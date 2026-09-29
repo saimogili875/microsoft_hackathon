@@ -96,5 +96,24 @@
       "verified_at": null,
       "valid_as_of": "2026-09-29"
     }
+  },
+  "episode:ep_d0c856fa78": {
+    "document_id": "episode:ep_d0c856fa78",
+    "content": "[EPISODE]\nSituation:\nFrom: [ANONYMIZED_EMAIL]\n\nObjection:\nHigh initial price tag and ROI uncertainty\n\nTactic:\nDemonstrated modular ROI calculator and offered tiered deployment\n\nCustomer reaction:\nAgreed to trial modular pilot phase\n\nOutcome:\nwon\n\nWhy:\nDe-risked initial capital outlay by breaking contract into phased milestones\n\nApplies when:\nWhen prospect raises High initial price tag and ROI uncertain objection, When negotiating enterprise software contracts\n\nDid not hold when:\nWhen customer requires single-vendor procurement, When budget is completely frozen\n\nLesson:\nStructure high-tier software quotes with phase 1 pilot options when price resistance occurs\n\nPricing context:\nNot specified\n\nVerified by:\naccount_executive (confirmed)\n\nValid as of:\n2026-09-29",
+    "metadata": {
+      "episode_id": "ep_d0c856fa78",
+      "deal_id": null,
+      "source_ids": [
+        "raw_28ba593e23",
+        "raw_email"
+      ],
+      "outcome": "won",
+      "extraction_confidence": 0.4,
+      "causal_confidence": 0.5,
+      "verification_status": "confirmed",
+      "verified_by_role": "account_executive",
+      "verified_at": "2026-09-29T16:52:04.326101+00:00",
+      "valid_as_of": "2026-09-29"
+    }
   }
 }

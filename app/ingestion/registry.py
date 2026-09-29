@@ -31,7 +31,11 @@ class LoaderRegistry:
         self._extension_map[ext.lower()] = loader
 
     def get_loader(self, file_path_or_ext: str) -> BaseLoader:
-        ext = Path(file_path_or_ext).suffix.lower()
+        path_obj = Path(file_path_or_ext)
+        ext = path_obj.suffix.lower()
+        if not ext and file_path_or_ext:
+            ext = file_path_or_ext.lower() if file_path_or_ext.startswith(".") else f".{file_path_or_ext.lower()}"
+
         if ext not in self._extension_map:
             raise ValueError(f"Unsupported file extension/type: '{ext}'. Supported: {list(self._extension_map.keys())}")
         return self._extension_map[ext]

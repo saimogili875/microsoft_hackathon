@@ -1,0 +1,5 @@
+Rep: Hi John, following up on our proposal for Global Cargo Corp.
+Customer: We compared your quote with Competitor X. Competitor X is offering a cheaper price quote of 7L now.
+Rep: What if we offer a modular phase 1 pilot with pre-built connectors?
+Customer: That sounds interesting. We will discuss it in our executive committee meeting next week.
+Rep Note: Customer agreed to discuss pilot, but outcome is currently pending. The salesperson thinks the phased rollout will probably win the deal.

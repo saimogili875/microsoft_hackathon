@@ -1,0 +1,14 @@
+From: sarah.jenkins@abclogistics.com
+To: alex.rep@dealintelligence.ai
+Subject: Implementation Proposal Feedback
+Date: 2026-08-15 14:30:00
+
+Hi Alex,
+
+We reviewed your enterprise software quote for ₹12L.
+Our VP of Operations mentioned that the implementation cost is too high for our Q3 budget.
+We would like to propose breaking the rollout into a Phase 1 pilot for ₹4L focused on core routing.
+
+Best regards,
+Sarah Jenkins
+CTO, ABC Logistics

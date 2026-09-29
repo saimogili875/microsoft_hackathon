@@ -1,0 +1,96 @@
+{
+  "result": {
+    "extraction_metadata": {
+      "source_id": "s1",
+      "source_type": "text",
+      "source_timestamp": null,
+      "extraction_version": "1.0",
+      "overall_extraction_confidence": 1.5
+    },
+    "episodes": [
+      {
+        "episode_id": null,
+        "deal_id": null,
+        "client_id": null,
+        "context": {
+          "stage": null,
+          "situation": null,
+          "goals": [],
+          "pain_points": [],
+          "requirements": []
+        },
+        "customer": {
+          "objections": [],
+          "concerns": [],
+          "reaction": null,
+          "preferences": [],
+          "priorities": []
+        },
+        "salesperson": {
+          "tactic": null,
+          "actions_taken": [],
+          "commitments": []
+        },
+        "outcome": {
+          "status": null,
+          "explicit_reason": null,
+          "next_step": null
+        },
+        "competition": [],
+        "commercial": {
+          "pricing_context": null,
+          "quoted_price": null,
+          "budget": null,
+          "discount": null
+        },
+        "stakeholders": [],
+        "products_and_tools": [],
+        "learning": {
+          "lesson": null,
+          "applies_when": [],
+          "did_not_hold_when": []
+        },
+        "temporal": {
+          "event_timestamp": null,
+          "valid_as_of": null
+        },
+        "provenance": {
+          "source_ids": [],
+          "evidence_spans": []
+        },
+        "confidence": {
+          "extraction_confidence": 1.2,
+          "causal_confidence": -0.5
+        },
+        "verification": {
+          "status": "pending_review"
+        }
+      }
+    ],
+    "unresolved_information": [],
+    "conflicts_detected": [],
+    "market_information": []
+  },
+  "errors": [
+    {
+      "field": "extraction_metadata.overall_extraction_confidence",
+      "error_type": "invalid_confidence_range",
+      "message": "Confidence 1.5 outside [0.0, 1.0] range.",
+      "details": {}
+    },
+    {
+      "field": "episodes[1].confidence.extraction_confidence",
+      "error_type": "invalid_confidence_range",
+      "message": "Extraction confidence 1.2 must be in range [0.0, 1.0].",
+      "details": {}
+    },
+    {
+      "field": "episodes[1].confidence.causal_confidence",
+      "error_type": "invalid_confidence_range",
+      "message": "Causal confidence -0.5 must be in range [0.0, 1.0].",
+      "details": {}
+    }
+  ],
+  "warnings": [],
+  "failed_at": "2026-09-29T16:55:44.708457+00:00"
+}

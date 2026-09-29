@@ -1,0 +1,7 @@
+CRM Note ID: crm_note_888
+Account: Delta Logistics
+Opportunity ID: D-DELTA-888
+Deal Stage: Closed Lost
+Pushback: Competitor Y offered 50% discount at end of quarter.
+Rep Strategy: Offered 10% discount.
+Result: Lost deal to Competitor Y due to price parity failure.

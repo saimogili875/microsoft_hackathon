@@ -1,0 +1,4 @@
+Speaker 1 (AE): Welcome everyone. Today we are reviewing the platform trial for Apex Corp.
+Speaker 2 (CTO): We tested the platform. The main objection was AWS data sovereignty compliance.
+Speaker 1 (AE): We provided our AWS local region compliance documentation yesterday.
+Speaker 2 (CTO): That satisfied our legal team. We signed the contract today!
