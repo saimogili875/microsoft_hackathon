@@ -324,5 +324,135 @@
       ],
       "causal_confidence": 0.35
     }
+  },
+  "episode:ep_d2a87e562e": {
+    "document_id": "episode:ep_d2a87e562e",
+    "content": "[EPISODE]\n\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_d2a87e562e",
+      "deal_id": "D-TRACE-9",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_5d70789e50": {
+    "document_id": "episode:ep_5d70789e50",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics (Deal D-ABC-100)\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_5d70789e50",
+      "deal_id": "D-ABC-100",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "demo_abc_hist_001"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_8c5d493d48": {
+    "document_id": "episode:ep_8c5d493d48",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics (Deal D-ABC-100)\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_8c5d493d48",
+      "deal_id": "D-ABC-100",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "demo_abc_hist_001"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_8629de1ed4": {
+    "document_id": "episode:ep_8629de1ed4",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics (Deal D-ABC-100)\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_8629de1ed4",
+      "deal_id": "D-ABC-100",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "demo_abc_hist_001"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_595cf5c54b": {
+    "document_id": "episode:ep_595cf5c54b",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics (Deal D-ABC-100)\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_595cf5c54b",
+      "deal_id": "D-ABC-100",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "demo_abc_hist_001"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_cfe36acf7f": {
+    "document_id": "episode:ep_cfe36acf7f",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics (Deal D-ABC-100)\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_cfe36acf7f",
+      "deal_id": "D-ABC-100",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "demo_abc_hist_001"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_0ac1438cc2": {
+    "document_id": "episode:ep_0ac1438cc2",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics (Deal D-ABC-100)\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_0ac1438cc2",
+      "deal_id": "D-ABC-100",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "demo_abc_hist_001"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_5fd784604f": {
+    "document_id": "episode:ep_5fd784604f",
+    "content": "[EPISODE]\n\nSituation:\nABC Logistics (Deal D-ABC-100)\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_5fd784604f",
+      "deal_id": "D-ABC-100",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "demo_abc_hist_001"
+      ],
+      "causal_confidence": 0.35
+    }
+  },
+  "episode:ep_11554f859e": {
+    "document_id": "episode:ep_11554f859e",
+    "content": "[EPISODE]\n\nSituation:\nLive call with Test Co\n\nObjection:\nPrice and implementation scope\n\nTactic:\nRep: Offered pilot option.\n\nCustomer reaction:\nAgreed to follow-up proposal\n\nOutcome:\nno_decision\n\nWhy:\nLive call concluded; full deal outcome pending next steps\n\nApplies when:\n['Live enterprise sales calls', 'Negotiating pricing scope']\n\nDid not hold when:\n['When budget is frozen']\n\nLesson:\nDocument customer objections immediately during live call\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_11554f859e",
+      "deal_id": "D-C1",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "live_s_contract"
+      ],
+      "causal_confidence": 0.4
+    }
+  },
+  "episode:ep_f27877ab54": {
+    "document_id": "episode:ep_f27877ab54",
+    "content": "[EPISODE]\n\nSituation:\nSales deal discussion\n\nObjection:\nUnspecified objection\n\nTactic:\nStandard sales presentation\n\nCustomer reaction:\nReaction not documented\n\nOutcome:\nwon\n\nWhy:\nReason not explicitly documented in source\n\nApplies when:\n['B2B enterprise sales negotiations']\n\nDid not hold when:\n['Budget freeze']\n\nLesson:\nDocument explicit customer reactions and outcomes\n\nVerified by:\naccount_executive (confirmed)",
+    "metadata": {
+      "episode_id": "ep_f27877ab54",
+      "deal_id": "D-TRACE-9",
+      "verification_status": "confirmed",
+      "source_ids": [
+        "crm_trace_999"
+      ],
+      "causal_confidence": 0.35
+    }
   }
 }
